@@ -5,7 +5,9 @@ document.getElementById("ok").addEventListener("click", function(){
     const password = document.getElementById("password").value;
 
     if (email && password) {
-        window.location = "index.html"
+        window.location = "index.html";
+        localStorage.setItem('email', email);
+        localStorage.setItem('password', password);       
     }
     else{
         alert("Datos incompletos")
