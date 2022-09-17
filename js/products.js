@@ -1,7 +1,13 @@
-//array donde se cargarán los datos recibidos:
 let categoriesArray = [];
 let minCount = undefined;
 let maxCount = undefined;
+
+//id del producto
+function setProductId(product_id) {
+  localStorage.setItem("productID", product_id);
+  window.location.href = "product-info.html";
+}
+//entrega 3
 
 //función que recibe un array con los datos, y los muestra en pantalla a través el uso del DOM
 function showCategoriesList(array){
@@ -22,7 +28,7 @@ function showCategoriesList(array){
         let category = array[i];
             if (category.cost >= minimo && category.cost <= maximo) {
             htmlContentToAppend += `
-            <div class="list-group-item list-group-item-action">
+            <div class="list-group-item list-group-item-action" onclick="setProductId(${category.id})">
                 <div class="row">
                     <div class="col-3">
                         <img src="` + category.image + `" alt="product image" class="img-thumbnail">
@@ -122,8 +128,7 @@ function ordenASC() {
       });
     
       document.getElementById("rangeFilterCount").addEventListener("click", function(){
-        //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
-        //de productos por categoría.
+
         minCount = document.getElementById("rangeFilterCountMin").value;
         maxCount = document.getElementById("rangeFilterCountMax").value;
     
