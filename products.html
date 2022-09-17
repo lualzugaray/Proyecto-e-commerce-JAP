@@ -45,9 +45,9 @@
       <div class="row">
         <div class="col text-end">
           <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
-            <input type="radio" class="btn-check" name="options" id="asc">
+            <input type="radio" class="btn-check" name="options" id="asc" onclick="ordenASC()">
             <label class="btn btn-light" for="asc">A-Z</label>
-            <input type="radio" class="btn-check" name="options" id="des">
+            <input type="radio" class="btn-check" name="options" id="des" onclick="ordenDES()">
             <label class="btn btn-light" for="des">Z-A</label>
             <input type="radio" class="btn-check" name="options" id="rel" checked>
             <label class="btn btn-light" for="rel"><i class="fas fa-sort-amount-down mr-1"></i></label>
@@ -68,7 +68,7 @@
             </div>
             <div class="col-3 p-0">
               <div class="btn-group" role="group">
-                <button class="btn btn-light btn-block" id="rel">Filtrar</button>
+                <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
                 <button class="btn btn-link btn-sm" id="clear">Limpiar</button>
               </div>
             </div>
