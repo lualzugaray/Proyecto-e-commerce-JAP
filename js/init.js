@@ -42,6 +42,17 @@ let getJSONData = function(url){
     });
 }
 
+function cerrarSesion(){
+  let usuario = localStorage.getItem("email");
+
+  if (usuario != undefined)
+  {
+      localStorage.removeItem("email");
+      usuario = undefined;
+      window.location = "login.html";
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () =>{
 
   let usuario = localStorage.getItem("email");
@@ -56,3 +67,5 @@ document.addEventListener("DOMContentLoaded", () =>{
   document.getElementById("cerrar").innerHTML = usuario;
 
 })
+
+

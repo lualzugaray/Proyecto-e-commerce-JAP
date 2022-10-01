@@ -4,6 +4,11 @@ let productCode = window.localStorage.getItem("productID");
 let productInfoUrl = PRODUCT_INFO_URL + productCode + EXT_TYPE; //info de los comentarios
 let productCommentUrl = PRODUCT_INFO_COMMENTS_URL + productCode + EXT_TYPE; //comentarios
 
+function setProductId(product_id) {
+  localStorage.setItem("productID", product_id);
+  window.location.href = "product-info.html";
+}
+
 async function showProductInfo() {
   function mostrarDatos(prodID, text) {
     const dato = document.getElementById(prodID);
@@ -21,6 +26,19 @@ async function showProductInfo() {
     }
   }
 
+  function prodRel(productos) {
+    const prod = document.getElementById("productosRel"); //productosRelacionados
+
+    for (let prodRela of productos) {
+      prod.innerHTML += `
+            <div onclick="setProductId(${prodRela.id})" class="col-3" style="margin-right: 7%">
+            <img src="` + prodRela.image + `" alt="product image" class="img-thumbnail">
+            <label for="img">`+ prodRela.name +`</label>
+           </div>
+           `; 
+    }
+  }
+
   const json = await getJSONData(productInfoUrl); //info del json
   const infoProducto = json.data;
 
@@ -34,6 +52,7 @@ async function showProductInfo() {
   mostrarDatos("prod-des", infoProducto.description);
 
   imagenesProductos(infoProducto.images);
+  prodRel(infoProducto.relatedProducts);
 }
 
 async function showProductComment() {
